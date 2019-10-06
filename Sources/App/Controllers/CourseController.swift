@@ -9,13 +9,33 @@ import Foundation
 import Vapor
 
 final class CourseController {
-    func get(_ req: Request) throws -> Future<[Course]> {
+    func index(_ req: Request) throws -> Future<[Course]> {
           return Course.query(on: req).all()
       }
-      
-      func post(_ req: Request) throws -> Future<Course> {
-          return try req.content.decode(Course.self).flatMap { course in
-              return course.save(on: req)
-          }
-      }
+    
+    func getCourse(_ req: Request) throws -> Future<Course> {
+        return try req.parameters.next(Course.self)
+    }
+    
+    func create(_ req: Request) throws -> Future<Course> {
+        return try req.content.decode(Course.self).flatMap { course in
+            return course.save(on: req)
+        }
+    }
+    
+    func delete(_ req: Request) throws -> Future<HTTPStatus> {
+        return try req.parameters.next(Course.self).flatMap { course in
+            return course.delete(on: req)
+        }.transform(to: .ok)
+    }
+    
+    func update(_ req: Request) throws -> Future<Course> {
+        return try req.parameters.next(Course.self).flatMap {
+            course in
+            return try req.content.decode(Course.self).flatMap { newCourse in
+                course.name = newCourse.name
+                return course.save(on: req)
+            }
+        }
+    }
 }

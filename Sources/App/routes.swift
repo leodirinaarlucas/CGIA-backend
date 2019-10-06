@@ -6,14 +6,16 @@ import Vapor
 /// [Learn More →](https://docs.vapor.codes/3.0/getting-started/structure/#routesswift)
 public func routes(_ router: Router) throws {
     let studentController = StudentController()
-    router.get("students", use: studentController.get)
-    router.post("students","add", use: studentController.post)
+    router.get("students", use: studentController.index)
+    router.post("students", use: studentController.create)
+    router.patch("students", Student.parameter, use: studentController.update)
+    router.delete("students", Student.parameter, use: studentController.delete)
     
     let instructorController = InstructorController()
-    router.get("instructor", use: instructorController.get)
-    router.post("instructor", "add", use: instructorController.post)
+    router.get("instructor", use: instructorController.index)
+    router.post("instructor", use: instructorController.create)
     
     let courseController = CourseController()
-    router.get("course", use: courseController.get)
-    router.post("course", "add", use: courseController.post)
+    router.get("course", use: courseController.index)
+    router.post("course", use: courseController.create)
 }
