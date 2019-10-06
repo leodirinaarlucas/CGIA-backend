@@ -1,4 +1,5 @@
 import Vapor
+import FluentPostgreSQL
 
 /// Called before your application initializes.
 ///
@@ -12,6 +13,18 @@ public func configure(
     let router = EngineRouter.default()
     try routes(router)
     services.register(router, as: Router.self)
+    
+    try services.register(FluentPostgreSQLProvider())
 
     // Configure the rest of your application here
+    
+    let postgreSQLConfig = PostgreSQLDatabaseConfig(hostname: "127.0.0.1", port: 5432, username: "carneiro", database: "CGIAdb", password: nil)
+    services.register(postgreSQLConfig)
+    
+    var migrations = MigrationConfig()
+    migrations.add(model: Student.self, database: .psql)
+    migrations.add(model: Course.self, database: .psql)
+    migrations.add(model: Instructor.self, database: .psql)
+    migrations.add(model: StudentCourse.self, database: .psql)
+    services.register(migrations)
 }

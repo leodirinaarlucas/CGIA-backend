@@ -1,0 +1,4 @@
+module CCryptoOpenSSL {
+    umbrella "/Users/carneiro/Git/CGIA-backend/CGIA-backend/.build/checkouts/crypto/Sources/CCryptoOpenSSL/include"
+    export *
+}
