@@ -8,7 +8,16 @@
 import Foundation
 import Vapor
 
-final class InstructorController {
+final class InstructorController: RouteCollection {
+    func boot(router: Router) throws {
+        let instructorControllerRoute = router.grouped(Paths.main, Paths.instructors)
+        instructorControllerRoute.get(use: index)
+        instructorControllerRoute.get(Instructor.parameter, use: getInstructor)
+        instructorControllerRoute.post(use: create)
+        instructorControllerRoute.patch(Instructor.parameter, use: update)
+        instructorControllerRoute.delete(Instructor.parameter, use: delete)
+    }
+    
     func index(_ req: Request) throws -> Future<[Instructor]> {
           return Instructor.query(on: req).all()
       }

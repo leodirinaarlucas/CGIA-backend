@@ -9,10 +9,8 @@ public func routes(_ router: Router) throws {
     try router.register(collection: studentController)
     
     let instructorController = InstructorController()
-    router.get("instructor", use: instructorController.index)
-    router.post("instructor", use: instructorController.create)
+    try router.register(collection: instructorController)
     
     let courseController = CourseController()
-    router.get("course", use: courseController.index)
-    router.post("course", use: courseController.create)
+    try router.register(collection: courseController)
 }
