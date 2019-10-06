@@ -29,6 +29,7 @@
 		A4A79BC8234A1F760036CC80 /* InstructorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A79BC7234A1F760036CC80 /* InstructorController.swift */; };
 		A4A79BCA234A1FA70036CC80 /* CourseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A79BC9234A1FA70036CC80 /* CourseController.swift */; };
 		A4A79BCC234A1FD20036CC80 /* StudentCourseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A79BCB234A1FD20036CC80 /* StudentCourseController.swift */; };
+		A4A79BCF234A5B2A0036CC80 /* PathConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A79BCE234A5B2A0036CC80 /* PathConstants.swift */; };
 		OBJ_1000 /* CNIOOpenSSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-nio-ssl::CNIOOpenSSL::Product" /* CNIOOpenSSL.framework */; };
 		OBJ_1001 /* DatabaseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "DatabaseKit::DatabaseKit::Product" /* DatabaseKit.framework */; };
 		OBJ_1002 /* Crypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Crypto::Crypto::Product" /* Crypto.framework */; };
@@ -5254,6 +5255,7 @@
 		A4A79BC7234A1F760036CC80 /* InstructorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructorController.swift; sourceTree = "<group>"; };
 		A4A79BC9234A1FA70036CC80 /* CourseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseController.swift; sourceTree = "<group>"; };
 		A4A79BCB234A1FD20036CC80 /* StudentCourseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentCourseController.swift; sourceTree = "<group>"; };
+		A4A79BCE234A5B2A0036CC80 /* PathConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathConstants.swift; sourceTree = "<group>"; };
 		"CGIA-backend::App::Product" /* App.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"CGIA-backend::AppTests::Product" /* AppTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		"CGIA-backend::Run::Product" /* Run */ = {isa = PBXFileReference; lastKnownFileType = text; path = Run; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -6944,6 +6946,14 @@
 				A4A79BCB234A1FD20036CC80 /* StudentCourseController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A4A79BCD234A5B120036CC80 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A4A79BCE234A5B2A0036CC80 /* PathConstants.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		OBJ_100 /* SQL */ = {
@@ -8915,6 +8925,7 @@
 		OBJ_8 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				A4A79BCD234A5B120036CC80 /* Helpers */,
 				A4A79BC6234A1EE40036CC80 /* Controllers */,
 				A4A79BBB234A1B5F0036CC80 /* Models */,
 				OBJ_9 /* boot.swift */,
@@ -12182,6 +12193,7 @@
 				OBJ_979 /* routes.swift in Sources */,
 				A4A79BBF234A1C4F0036CC80 /* Instructor.swift in Sources */,
 				A4A79BC5234A1EDE0036CC80 /* StudentController.swift in Sources */,
+				A4A79BCF234A5B2A0036CC80 /* PathConstants.swift in Sources */,
 				A4A79BC8234A1F760036CC80 /* InstructorController.swift in Sources */,
 				A4A79BBD234A1B8D0036CC80 /* Student.swift in Sources */,
 				A4A79BC3234A1D7F0036CC80 /* StudentCourse.swift in Sources */,
