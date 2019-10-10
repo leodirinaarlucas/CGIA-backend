@@ -26,6 +26,7 @@ final class StudentCourse: PostgreSQLPivot, ModifiablePivot {
     var id: Int?
     var studentID: Student.ID
     var courseID: Course.ID
+    var grade: Float?
 }
 
 extension StudentCourse {

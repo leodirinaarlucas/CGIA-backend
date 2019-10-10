@@ -13,6 +13,7 @@ final class InstructorController: RouteCollection {
         let instructorControllerRoute = router.grouped(Paths.main, Paths.instructors)
         instructorControllerRoute.get(use: index)
         instructorControllerRoute.get(Instructor.parameter, use: getInstructor)
+        instructorControllerRoute.get(Instructor.parameter, "courses", use: getInstructorCourse)
         instructorControllerRoute.post(use: create)
         instructorControllerRoute.patch(Instructor.parameter, use: update)
         instructorControllerRoute.delete(Instructor.parameter, use: delete)
@@ -25,8 +26,14 @@ final class InstructorController: RouteCollection {
     func getInstructor(_ req: Request) throws -> Future<Instructor> {
         return try req.parameters.next(Instructor.self)
     }
+    
+    func getInstructorCourse(_ req: Request) throws -> Future<[Course]> {
+        return try req.parameters.next(Instructor.self).flatMap(to: [Course].self) { instructor in
+            return try instructor.courses.query(on: req).all()
+        }
+    }
       
-      func create(_ req: Request) throws -> Future<Instructor> {
+    func create(_ req: Request) throws -> Future<Instructor> {
           return try req.content.decode(Instructor.self).flatMap { instructor in
               return instructor.save(on: req)
           }
