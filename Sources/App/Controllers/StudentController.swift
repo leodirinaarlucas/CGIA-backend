@@ -26,6 +26,7 @@ final class StudentController: RouteCollection {
         router.get(use: index)
         router.get(Student.parameter, use: getStudent)
         router.get(Student.parameter, Paths.classroom, use: getClasses)
+        router.get(Student.parameter, Paths.grade, use: getGrades)
         router.post(use: create)
         router.patch(Student.parameter, use: update)
         router.delete(Student.parameter, use: delete)
@@ -72,6 +73,12 @@ final class StudentController: RouteCollection {
     func getClasses(_ req: Request) throws -> Future<[Classroom]> {
         return try req.parameters.next(Student.self).flatMap(to: [Classroom].self) { student in
             return try student.classrooms.query(on: req).all()
+        }
+    }
+    
+    func getGrades(_ req: Request) throws -> Future<[Grade]> {
+        return try req.parameters.next(Student.self).flatMap(to: [Grade].self) { student in
+            return try student.grades.query(on: req).all()
         }
     }
 }

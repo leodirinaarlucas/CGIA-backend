@@ -22,6 +22,14 @@ struct CompleteClassroom: Content {
 final class ClassroomController: RouteCollection {
     func boot(router: Router) throws {
         let router = router.grouped(Paths.main, Paths.classroom)
+        router.get(use: index)
+        router.get(Classroom.parameter, use: getClassroom)
+        router.get(Classroom.parameter, Paths.subjects, use: getSubject)
+        router.get(Classroom.parameter, Paths.grade, use: getGrades)
+        router.get(Classroom.parameter, Paths.instructors, use: getInstructor)
+        router.post(use: create)
+        router.patch(Classroom.parameter, use: update)
+        router.delete(Classroom.parameter, use: delete)
     }
     
     func index(_ req: Request) throws -> Future<[Classroom]> {
@@ -37,6 +45,24 @@ final class ClassroomController: RouteCollection {
                     }
                 }
             }
+        }
+    }
+    
+    func getGrades(_ req: Request) throws -> Future<[Grade]> {
+        return try req.parameters.next(Classroom.self).flatMap(to: [Grade].self) { classroom in
+            return try classroom.grades.query(on: req).all()
+        }
+    }
+    
+    func getInstructor(_ req: Request) throws -> Future<Instructor> {
+        return try req.parameters.next(Classroom.self).flatMap(to: Instructor.self) { classroom in
+            return classroom.instructor.get(on: req)
+        }
+    }
+    
+    func getSubject(_ req: Request) throws -> Future<Subject> {
+        return try req.parameters.next(Classroom.self).flatMap(to: Subject.self) { classroom in
+            return classroom.subject.get(on: req)
         }
     }
     
@@ -59,6 +85,8 @@ final class ClassroomController: RouteCollection {
             return try req.content.decode(Classroom.self).flatMap {
                 newClassroom in
                 classroom.name = newClassroom.name
+                classroom.subjectID = newClassroom.subjectID
+                classroom.instructorID = newClassroom.instructorID
                 return classroom.save(on: req)
             }
         }

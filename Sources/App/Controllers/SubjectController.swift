@@ -57,10 +57,10 @@ final class CourseController: RouteCollection {
     
     func update(_ req: Request) throws -> Future<Subject> {
         return try req.parameters.next(Subject.self).flatMap {
-            course in
-            return try req.content.decode(Subject.self).flatMap { newCourse in
-                course.name = newCourse.name
-                return course.save(on: req)
+            subject in
+            return try req.content.decode(Subject.self).flatMap { newSubject in
+                subject.name = newSubject.name
+                return subject.save(on: req)
             }
         }
     }
