@@ -30,8 +30,8 @@ public func configure(
     
     var migrations = MigrationConfig()
     migrations.add(model: Student.self, database: .psql)
-    migrations.add(model: Course.self, database: .psql)
+    migrations.add(model: Subject.self, database: .psql)
     migrations.add(model: Instructor.self, database: .psql)
-    migrations.add(model: StudentCourse.self, database: .psql)
+    migrations.add(model: SubjectClassroom.self, database: .psql)
     services.register(migrations)
 }

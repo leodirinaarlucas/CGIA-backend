@@ -21,14 +21,19 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		A40BC8202354F35400BFA185 /* Classroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40BC81F2354F35400BFA185 /* Classroom.swift */; };
+		A40BC8222354F4D600BFA185 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40BC8212354F4D600BFA185 /* User.swift */; };
+		A40BC8242354F55500BFA185 /* Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40BC8232354F55500BFA185 /* Admin.swift */; };
+		A40BC8262354F5F500BFA185 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40BC8252354F5F400BFA185 /* Grade.swift */; };
+		A40BC8282354F72F00BFA185 /* StudentClassroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40BC8272354F72F00BFA185 /* StudentClassroom.swift */; };
+		A40BC82C2355124E00BFA185 /* ClassroomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40BC82B2355124E00BFA185 /* ClassroomController.swift */; };
 		A4A79BBD234A1B8D0036CC80 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A79BBC234A1B8D0036CC80 /* Student.swift */; };
 		A4A79BBF234A1C4F0036CC80 /* Instructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A79BBE234A1C4F0036CC80 /* Instructor.swift */; };
-		A4A79BC1234A1CBF0036CC80 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A79BC0234A1CBF0036CC80 /* Course.swift */; };
-		A4A79BC3234A1D7F0036CC80 /* StudentCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A79BC2234A1D7F0036CC80 /* StudentCourse.swift */; };
+		A4A79BC1234A1CBF0036CC80 /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A79BC0234A1CBF0036CC80 /* Subject.swift */; };
+		A4A79BC3234A1D7F0036CC80 /* SubjectClassroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A79BC2234A1D7F0036CC80 /* SubjectClassroom.swift */; };
 		A4A79BC5234A1EDE0036CC80 /* StudentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A79BC4234A1EDE0036CC80 /* StudentController.swift */; };
 		A4A79BC8234A1F760036CC80 /* InstructorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A79BC7234A1F760036CC80 /* InstructorController.swift */; };
-		A4A79BCA234A1FA70036CC80 /* CourseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A79BC9234A1FA70036CC80 /* CourseController.swift */; };
-		A4A79BCC234A1FD20036CC80 /* StudentCourseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A79BCB234A1FD20036CC80 /* StudentCourseController.swift */; };
+		A4A79BCA234A1FA70036CC80 /* SubjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A79BC9234A1FA70036CC80 /* SubjectController.swift */; };
 		A4A79BCF234A5B2A0036CC80 /* PathConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A79BCE234A5B2A0036CC80 /* PathConstants.swift */; };
 		OBJ_1000 /* CNIOOpenSSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-nio-ssl::CNIOOpenSSL::Product" /* CNIOOpenSSL.framework */; };
 		OBJ_1001 /* DatabaseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "DatabaseKit::DatabaseKit::Product" /* DatabaseKit.framework */; };
@@ -5247,14 +5252,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A40BC81F2354F35400BFA185 /* Classroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classroom.swift; sourceTree = "<group>"; };
+		A40BC8212354F4D600BFA185 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A40BC8232354F55500BFA185 /* Admin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Admin.swift; sourceTree = "<group>"; };
+		A40BC8252354F5F400BFA185 /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
+		A40BC8272354F72F00BFA185 /* StudentClassroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentClassroom.swift; sourceTree = "<group>"; };
+		A40BC82B2355124E00BFA185 /* ClassroomController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassroomController.swift; sourceTree = "<group>"; };
 		A4A79BBC234A1B8D0036CC80 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		A4A79BBE234A1C4F0036CC80 /* Instructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instructor.swift; sourceTree = "<group>"; };
-		A4A79BC0234A1CBF0036CC80 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
-		A4A79BC2234A1D7F0036CC80 /* StudentCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentCourse.swift; sourceTree = "<group>"; };
+		A4A79BC0234A1CBF0036CC80 /* Subject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
+		A4A79BC2234A1D7F0036CC80 /* SubjectClassroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectClassroom.swift; sourceTree = "<group>"; };
 		A4A79BC4234A1EDE0036CC80 /* StudentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentController.swift; sourceTree = "<group>"; };
 		A4A79BC7234A1F760036CC80 /* InstructorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructorController.swift; sourceTree = "<group>"; };
-		A4A79BC9234A1FA70036CC80 /* CourseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseController.swift; sourceTree = "<group>"; };
-		A4A79BCB234A1FD20036CC80 /* StudentCourseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentCourseController.swift; sourceTree = "<group>"; };
+		A4A79BC9234A1FA70036CC80 /* SubjectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectController.swift; sourceTree = "<group>"; };
 		A4A79BCE234A5B2A0036CC80 /* PathConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathConstants.swift; sourceTree = "<group>"; };
 		"CGIA-backend::App::Product" /* App.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"CGIA-backend::AppTests::Product" /* AppTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -6931,8 +6941,13 @@
 			children = (
 				A4A79BBC234A1B8D0036CC80 /* Student.swift */,
 				A4A79BBE234A1C4F0036CC80 /* Instructor.swift */,
-				A4A79BC0234A1CBF0036CC80 /* Course.swift */,
-				A4A79BC2234A1D7F0036CC80 /* StudentCourse.swift */,
+				A4A79BC0234A1CBF0036CC80 /* Subject.swift */,
+				A4A79BC2234A1D7F0036CC80 /* SubjectClassroom.swift */,
+				A40BC81F2354F35400BFA185 /* Classroom.swift */,
+				A40BC8212354F4D600BFA185 /* User.swift */,
+				A40BC8232354F55500BFA185 /* Admin.swift */,
+				A40BC8252354F5F400BFA185 /* Grade.swift */,
+				A40BC8272354F72F00BFA185 /* StudentClassroom.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -6942,8 +6957,8 @@
 			children = (
 				A4A79BC4234A1EDE0036CC80 /* StudentController.swift */,
 				A4A79BC7234A1F760036CC80 /* InstructorController.swift */,
-				A4A79BC9234A1FA70036CC80 /* CourseController.swift */,
-				A4A79BCB234A1FD20036CC80 /* StudentCourseController.swift */,
+				A4A79BC9234A1FA70036CC80 /* SubjectController.swift */,
+				A40BC82B2355124E00BFA185 /* ClassroomController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -8020,7 +8035,7 @@
 			path = Message;
 			sourceTree = "<group>";
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -8035,7 +8050,6 @@
 				OBJ_970 /* README.md */,
 				OBJ_971 /* circle.yml */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_504 /* Responder */ = {
@@ -10937,7 +10951,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_919 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -12185,18 +12199,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				A4A79BC1234A1CBF0036CC80 /* Course.swift in Sources */,
+				A4A79BC1234A1CBF0036CC80 /* Subject.swift in Sources */,
 				OBJ_977 /* boot.swift in Sources */,
-				A4A79BCA234A1FA70036CC80 /* CourseController.swift in Sources */,
+				A4A79BCA234A1FA70036CC80 /* SubjectController.swift in Sources */,
 				OBJ_978 /* configure.swift in Sources */,
-				A4A79BCC234A1FD20036CC80 /* StudentCourseController.swift in Sources */,
 				OBJ_979 /* routes.swift in Sources */,
+				A40BC8222354F4D600BFA185 /* User.swift in Sources */,
 				A4A79BBF234A1C4F0036CC80 /* Instructor.swift in Sources */,
 				A4A79BC5234A1EDE0036CC80 /* StudentController.swift in Sources */,
+				A40BC82C2355124E00BFA185 /* ClassroomController.swift in Sources */,
+				A40BC8282354F72F00BFA185 /* StudentClassroom.swift in Sources */,
+				A40BC8262354F5F500BFA185 /* Grade.swift in Sources */,
+				A40BC8202354F35400BFA185 /* Classroom.swift in Sources */,
 				A4A79BCF234A5B2A0036CC80 /* PathConstants.swift in Sources */,
 				A4A79BC8234A1F760036CC80 /* InstructorController.swift in Sources */,
 				A4A79BBD234A1B8D0036CC80 /* Student.swift in Sources */,
-				A4A79BC3234A1D7F0036CC80 /* StudentCourse.swift in Sources */,
+				A40BC8242354F55500BFA185 /* Admin.swift in Sources */,
+				A4A79BC3234A1D7F0036CC80 /* SubjectClassroom.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

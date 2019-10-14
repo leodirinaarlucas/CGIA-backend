@@ -13,5 +13,9 @@ enum Paths {
     static let version: String = "v1"
     static let students: String = "students"
     static let instructors: String = "instructors"
-    static let courses: String = "courses"
+    static let subjects: String = "subjects"
+    static let classroom: String = "classroom"
+    static let grade: String = "grade"
+    static let user: String = "user"
+    static let admin: String = "admin"
 }

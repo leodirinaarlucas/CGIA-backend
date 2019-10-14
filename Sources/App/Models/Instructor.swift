@@ -13,15 +13,21 @@ import Vapor
 final class Instructor: PostgreSQLModel {
     var id: Int?
     var name: String
+    var lastName: String
+    var username: String
+    var dateOfBirth: String
     
-    public init(id: Int? = nil, name: String) {
+    public init(id: Int? = nil, name: String, lastName: String, username: String, dateOfBirth: String) {
         self.id = id
         self.name = name
+        self.username = username
+        self.dateOfBirth = dateOfBirth
+        self.lastName = lastName
     }
 }
 
 extension Instructor {
-    var courses: Children<Instructor, Course> {
+    var classrooms: Children<Instructor, Classroom> {
         return children(\.instructorID)
     }
 }
