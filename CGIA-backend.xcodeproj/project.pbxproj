@@ -37,6 +37,7 @@
 		A4A79BC8234A1F760036CC80 /* InstructorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A79BC7234A1F760036CC80 /* InstructorController.swift */; };
 		A4A79BCA234A1FA70036CC80 /* SubjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A79BC9234A1FA70036CC80 /* SubjectController.swift */; };
 		A4A79BCF234A5B2A0036CC80 /* PathConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A79BCE234A5B2A0036CC80 /* PathConstants.swift */; };
+		A4DB6649235BAD2700CAC07D /* GradeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DB6648235BAD2700CAC07D /* GradeController.swift */; };
 		OBJ_1000 /* CNIOOpenSSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-nio-ssl::CNIOOpenSSL::Product" /* CNIOOpenSSL.framework */; };
 		OBJ_1001 /* DatabaseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "DatabaseKit::DatabaseKit::Product" /* DatabaseKit.framework */; };
 		OBJ_1002 /* Crypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Crypto::Crypto::Product" /* Crypto.framework */; };
@@ -5270,6 +5271,7 @@
 		A4A79BC7234A1F760036CC80 /* InstructorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructorController.swift; sourceTree = "<group>"; };
 		A4A79BC9234A1FA70036CC80 /* SubjectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectController.swift; sourceTree = "<group>"; };
 		A4A79BCE234A5B2A0036CC80 /* PathConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathConstants.swift; sourceTree = "<group>"; };
+		A4DB6648235BAD2700CAC07D /* GradeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeController.swift; sourceTree = "<group>"; };
 		"CGIA-backend::App::Product" /* App.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"CGIA-backend::AppTests::Product" /* AppTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		"CGIA-backend::Run::Product" /* Run */ = {isa = PBXFileReference; lastKnownFileType = text; path = Run; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -6965,6 +6967,7 @@
 				A40BC82B2355124E00BFA185 /* ClassroomController.swift */,
 				A40BC82D2355358F00BFA185 /* UserController.swift */,
 				A40BC82F235537AC00BFA185 /* AdminController.swift */,
+				A4DB6648235BAD2700CAC07D /* GradeController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -12224,6 +12227,7 @@
 				A40BC8242354F55500BFA185 /* Admin.swift in Sources */,
 				A4A79BC3234A1D7F0036CC80 /* SubjectClassroom.swift in Sources */,
 				A40BC830235537AC00BFA185 /* AdminController.swift in Sources */,
+				A4DB6649235BAD2700CAC07D /* GradeController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

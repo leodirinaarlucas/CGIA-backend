@@ -11,6 +11,15 @@ public func routes(_ router: Router) throws {
     let instructorController = InstructorController()
     try router.register(collection: instructorController)
     
-    let courseController = CourseController()
-    try router.register(collection: courseController)
+    let subjectController = SubjectController()
+    try router.register(collection: subjectController)
+    
+    let classroomController = ClassroomController()
+    try router.register(collection: classroomController)
+    
+    let userController = UserController()
+    try router.register(collection: userController)
+    
+    let adminController = AdminController()
+    try router.register(collection: adminController)
 }

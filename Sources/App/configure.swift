@@ -32,6 +32,11 @@ public func configure(
     migrations.add(model: Student.self, database: .psql)
     migrations.add(model: Subject.self, database: .psql)
     migrations.add(model: Instructor.self, database: .psql)
+    migrations.add(model: Classroom.self, database: .psql)
+    migrations.add(model: User.self, database: .psql)
+    migrations.add(model: Grade.self, database: .psql)
+    migrations.add(model: Admin.self, database: .psql)
+    migrations.add(model: StudentClassroom.self, database: .psql)
     migrations.add(model: SubjectClassroom.self, database: .psql)
     services.register(migrations)
 }

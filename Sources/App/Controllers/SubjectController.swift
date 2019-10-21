@@ -14,7 +14,7 @@ struct CompleteSubject: Content {
     var classrooms: [Classroom]
 }
 
-final class CourseController: RouteCollection {
+final class SubjectController: RouteCollection {
     func boot(router: Router) throws {
         let router = router.grouped(Paths.main, Paths.subjects)
         router.get(use: index)
