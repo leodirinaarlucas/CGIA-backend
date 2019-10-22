@@ -29,6 +29,7 @@
 		A40BC82C2355124E00BFA185 /* ClassroomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40BC82B2355124E00BFA185 /* ClassroomController.swift */; };
 		A40BC82E2355358F00BFA185 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40BC82D2355358F00BFA185 /* UserController.swift */; };
 		A40BC830235537AC00BFA185 /* AdminController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40BC82F235537AC00BFA185 /* AdminController.swift */; };
+		A4128112235F3B990091C028 /* StudentClassroomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4128111235F3B990091C028 /* StudentClassroomController.swift */; };
 		A4A79BBD234A1B8D0036CC80 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A79BBC234A1B8D0036CC80 /* Student.swift */; };
 		A4A79BBF234A1C4F0036CC80 /* Instructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A79BBE234A1C4F0036CC80 /* Instructor.swift */; };
 		A4A79BC1234A1CBF0036CC80 /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A79BC0234A1CBF0036CC80 /* Subject.swift */; };
@@ -5263,6 +5264,7 @@
 		A40BC82B2355124E00BFA185 /* ClassroomController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassroomController.swift; sourceTree = "<group>"; };
 		A40BC82D2355358F00BFA185 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		A40BC82F235537AC00BFA185 /* AdminController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminController.swift; sourceTree = "<group>"; };
+		A4128111235F3B990091C028 /* StudentClassroomController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentClassroomController.swift; sourceTree = "<group>"; };
 		A4A79BBC234A1B8D0036CC80 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		A4A79BBE234A1C4F0036CC80 /* Instructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instructor.swift; sourceTree = "<group>"; };
 		A4A79BC0234A1CBF0036CC80 /* Subject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
@@ -6968,6 +6970,7 @@
 				A40BC82D2355358F00BFA185 /* UserController.swift */,
 				A40BC82F235537AC00BFA185 /* AdminController.swift */,
 				A4DB6648235BAD2700CAC07D /* GradeController.swift */,
+				A4128111235F3B990091C028 /* StudentClassroomController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -12225,6 +12228,7 @@
 				A4A79BC8234A1F760036CC80 /* InstructorController.swift in Sources */,
 				A4A79BBD234A1B8D0036CC80 /* Student.swift in Sources */,
 				A40BC8242354F55500BFA185 /* Admin.swift in Sources */,
+				A4128112235F3B990091C028 /* StudentClassroomController.swift in Sources */,
 				A4A79BC3234A1D7F0036CC80 /* SubjectClassroom.swift in Sources */,
 				A40BC830235537AC00BFA185 /* AdminController.swift in Sources */,
 				A4DB6649235BAD2700CAC07D /* GradeController.swift in Sources */,

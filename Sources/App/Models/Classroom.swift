@@ -33,6 +33,10 @@ final class Classroom: PostgreSQLModel {
     var subject: Parent<Classroom, Subject> {
         return parent(\.subjectID)
     }
+    
+    var students: Siblings<Classroom, Student, StudentClassroom> {
+        return siblings()
+    }
 }
 
 extension Classroom: Migration {

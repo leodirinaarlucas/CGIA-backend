@@ -11,12 +11,12 @@ import Vapor
 
 final class Grade: PostgreSQLModel {
     var id: Int?
-    var grades: [Float]
-    var finalGrade: Float
+    var grades: [Double]
+    var finalGrade: Double
     var studentID: Student.ID
     var classroomID: Classroom.ID
     
-    init(id: Int? = nil, grades: [Float], finalGrade: Float, student: Student.ID, classroom: Classroom.ID) {
+    init(id: Int? = nil, grades: [Double], finalGrade: Double, student: Student.ID, classroom: Classroom.ID) {
         self.id = id
         self.grades = grades
         self.finalGrade = finalGrade

@@ -22,4 +22,10 @@ public func routes(_ router: Router) throws {
     
     let adminController = AdminController()
     try router.register(collection: adminController)
+    
+    let studentClassroomController = StudentClassroomController()
+    try router.register(collection: studentClassroomController)
+    
+    let gradeController = GradeController()
+    try router.register(collection: gradeController)
 }

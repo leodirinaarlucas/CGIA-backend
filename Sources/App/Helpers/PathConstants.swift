@@ -14,8 +14,9 @@ enum Paths {
     static let students: String = "students"
     static let instructors: String = "instructors"
     static let subjects: String = "subjects"
-    static let classroom: String = "classroom"
-    static let grade: String = "grade"
-    static let user: String = "user"
-    static let admin: String = "admin"
+    static let classroom: String = "classrooms"
+    static let grade: String = "grades"
+    static let user: String = "users"
+    static let admin: String = "admins"
+    static let stuClass: String = "studentsClassrooms"
 }

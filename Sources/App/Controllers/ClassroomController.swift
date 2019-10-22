@@ -17,6 +17,7 @@ struct CompleteClassroom: Content {
     var grades: [Grade]
     var instructor: Instructor
     var subject: Subject
+    var students: [Student]
 }
 
 final class ClassroomController: RouteCollection {
@@ -40,8 +41,10 @@ final class ClassroomController: RouteCollection {
         return try req.parameters.next(Classroom.self).flatMap(to: CompleteClassroom.self) { classroom in
             return try classroom.grades.query(on: req).all().flatMap(to: CompleteClassroom.self) { grades in
                 return classroom.instructor.get(on: req).flatMap(to: CompleteClassroom.self) { instructor in
-                    return classroom.subject.get(on: req).map(to: CompleteClassroom.self) { subject in
-                        return try CompleteClassroom(id: classroom.requireID(), name: classroom.name, subjectID: classroom.subjectID, instructorID: classroom.instructorID, grades: grades, instructor: instructor, subject: subject)
+                    return classroom.subject.get(on: req).flatMap(to: CompleteClassroom.self) { subject in
+                        return try classroom.students.query(on: req).all().map(to: CompleteClassroom.self) { students in
+                            return try CompleteClassroom(id: classroom.requireID(), name: classroom.name, subjectID: classroom.subjectID, instructorID: classroom.instructorID, grades: grades, instructor: instructor, subject: subject, students: students)
+                        }
                     }
                 }
             }
