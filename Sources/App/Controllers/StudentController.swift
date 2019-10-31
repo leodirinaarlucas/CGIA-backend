@@ -16,6 +16,7 @@ struct CompleteStudent: Content {
     let dateOfBirth: String
     var classrooms: [Classroom]
     var grades: [Grade]
+    var userID: User.ID
 }
 
 
@@ -39,7 +40,7 @@ final class StudentController: RouteCollection {
         return try req.parameters.next(Student.self).flatMap(to: CompleteStudent.self) { student in
             return try student.classrooms.query(on: req).all().flatMap(to: CompleteStudent.self) { classrooms in
                 return try student.grades.query(on: req).all().map(to: CompleteStudent.self) { grades in
-                    return try CompleteStudent(id: student.requireID(), name: student.name, lastName: student.lastName, dateOfBirth: student.dateOfBirth, classrooms: classrooms, grades: grades)
+                    return try CompleteStudent(id: student.requireID(), name: student.name, lastName: student.lastName, dateOfBirth: student.dateOfBirth, classrooms: classrooms, grades: grades, userID: student.userID)
                 }
             }
         }

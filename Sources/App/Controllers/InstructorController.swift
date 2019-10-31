@@ -14,6 +14,7 @@ struct CompleteInstructor: Content {
     let lastName: String
     let dateOfBirth: String
     var classrooms: [Classroom]
+    var userID: User.ID
 }
 
 final class InstructorController: RouteCollection {
@@ -34,7 +35,7 @@ final class InstructorController: RouteCollection {
     func getInstructor(_ req: Request) throws -> Future<CompleteInstructor> {
         return try req.parameters.next(Instructor.self).flatMap(to: CompleteInstructor.self) { instructor in
             return try instructor.classrooms.query(on: req).all().map(to: CompleteInstructor.self) { classrooms in
-                return try CompleteInstructor(id: instructor.requireID(), name: instructor.name, lastName: instructor.lastName, dateOfBirth: instructor.dateOfBirth, classrooms: classrooms)
+                return try CompleteInstructor(id: instructor.requireID(), name: instructor.name, lastName: instructor.lastName, dateOfBirth: instructor.dateOfBirth, classrooms: classrooms, userID: User.ID)
             }
         }
     }
