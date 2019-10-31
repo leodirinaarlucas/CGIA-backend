@@ -14,12 +14,14 @@ final class Classroom: PostgreSQLModel {
     var name: String
     var subjectID: Subject.ID
     var instructorID: Instructor.ID
+    var active: Bool
     
-    init(id: Int? = nil, name: String, subjectID: Subject.ID, instructorID: Instructor.ID) {
+    init(id: Int? = nil, name: String, subjectID: Subject.ID, instructorID: Instructor.ID, active: Bool) {
         self.id = id
         self.name = name
         self.subjectID = subjectID
         self.instructorID = instructorID
+        self.active = active
     }
     
     var grades: Children<Classroom, Grade> {

@@ -14,15 +14,15 @@ final class Student: PostgreSQLModel {
     var id: Int?
     var name: String
     var lastName: String
-    var username: String
     var dateOfBirth: String
+    var userID: User.ID
     
-    public init(id: Int? = nil, name: String, lastName: String, username: String, dateOfBirth: String) {
+    public init(id: Int? = nil, name: String, lastName: String, dateOfBirth: String, userID: User.ID) {
         self.id = id
         self.name = name
         self.lastName = lastName
-        self.username = username
         self.dateOfBirth = dateOfBirth
+        self.userID = userID
     }
     
     var classrooms: Siblings<Student, Classroom, StudentClassroom> {

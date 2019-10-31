@@ -12,7 +12,6 @@ struct CompleteInstructor: Content {
     let id: Int
     let name: String
     let lastName: String
-    let username: String
     let dateOfBirth: String
     var classrooms: [Classroom]
 }
@@ -35,7 +34,7 @@ final class InstructorController: RouteCollection {
     func getInstructor(_ req: Request) throws -> Future<CompleteInstructor> {
         return try req.parameters.next(Instructor.self).flatMap(to: CompleteInstructor.self) { instructor in
             return try instructor.classrooms.query(on: req).all().map(to: CompleteInstructor.self) { classrooms in
-                return try CompleteInstructor(id: instructor.requireID(), name: instructor.name, lastName: instructor.lastName, username: instructor.username, dateOfBirth: instructor.dateOfBirth, classrooms: classrooms)
+                return try CompleteInstructor(id: instructor.requireID(), name: instructor.name, lastName: instructor.lastName, dateOfBirth: instructor.dateOfBirth, classrooms: classrooms)
             }
         }
     }
@@ -48,7 +47,12 @@ final class InstructorController: RouteCollection {
       
     func create(_ req: Request) throws -> Future<Instructor> {
           return try req.content.decode(Instructor.self).flatMap { instructor in
+            return User.find(instructor.userID, on: req).flatMap { user in
+            guard user != nil else {
+                throw Abort(.badRequest, reason: "No user with this ID exists.")
+            }
               return instructor.save(on: req)
+            }
           }
       }
     
@@ -63,7 +67,6 @@ final class InstructorController: RouteCollection {
             return try req.content.decode(Instructor.self).flatMap { newInstructor in
                 instructor.name = newInstructor.name
                 instructor.lastName = newInstructor.lastName
-                instructor.username = newInstructor.username
                 instructor.dateOfBirth = newInstructor.dateOfBirth
                 return instructor.save(on: req)
             }

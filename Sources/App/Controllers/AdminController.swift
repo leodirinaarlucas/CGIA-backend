@@ -29,7 +29,12 @@ final class AdminController: RouteCollection {
     
     func create(_ req: Request) throws -> Future<Admin> {
         return try req.content.decode(Admin.self).flatMap { admin in
+            return User.find(admin.userID, on: req).flatMap { user in
+            guard user != nil else {
+                throw Abort(.badRequest, reason: "No user with this ID exists.")
+                }
             return admin.save(on: req)
+            }
         }
     }
     
@@ -44,7 +49,6 @@ final class AdminController: RouteCollection {
             return try req.content.decode(Admin.self).flatMap { newAdmin in
                 admin.name = newAdmin.name
                 admin.lastName = newAdmin.lastName
-                admin.username = newAdmin.username
                 return admin.save(on: req)
             }
         }

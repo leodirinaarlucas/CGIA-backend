@@ -1,0 +1,23 @@
+# rule identifiers to exclude from running
+disabled_rules:
+  - file_length
+  - function_body_length
+  - function_parameter_count
+  - leading_whitespace
+  - line_length
+
+
+# special configuration for rules 
+colon:
+  flexible_right_spacing: false
+  apply_to_dictionaries: true
+
+cyclomatic_complexity:
+  warning: 10
+  error: 20
+  ignores_case_statements: false
+
+large_tuple:
+  warning: 2
+  error: 3
+

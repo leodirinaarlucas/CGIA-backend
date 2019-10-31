@@ -18,6 +18,7 @@ struct CompleteClassroom: Content {
     var instructor: Instructor
     var subject: Subject
     var students: [Student]
+    var active: Bool
 }
 
 final class ClassroomController: RouteCollection {
@@ -43,7 +44,10 @@ final class ClassroomController: RouteCollection {
                 return classroom.instructor.get(on: req).flatMap(to: CompleteClassroom.self) { instructor in
                     return classroom.subject.get(on: req).flatMap(to: CompleteClassroom.self) { subject in
                         return try classroom.students.query(on: req).all().map(to: CompleteClassroom.self) { students in
-                            return try CompleteClassroom(id: classroom.requireID(), name: classroom.name, subjectID: classroom.subjectID, instructorID: classroom.instructorID, grades: grades, instructor: instructor, subject: subject, students: students)
+                            return try CompleteClassroom(id: classroom.requireID(), name: classroom.name,
+                                                         subjectID: classroom.subjectID,
+                                                         instructorID: classroom.instructorID, grades: grades,
+                                                         instructor: instructor, subject: subject, students: students, active: classroom.active)
                         }
                     }
                 }

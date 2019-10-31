@@ -13,7 +13,6 @@ struct CompleteStudent: Content {
     let id: Int
     let name: String
     let lastName: String
-    let username: String
     let dateOfBirth: String
     var classrooms: [Classroom]
     var grades: [Grade]
@@ -40,7 +39,7 @@ final class StudentController: RouteCollection {
         return try req.parameters.next(Student.self).flatMap(to: CompleteStudent.self) { student in
             return try student.classrooms.query(on: req).all().flatMap(to: CompleteStudent.self) { classrooms in
                 return try student.grades.query(on: req).all().map(to: CompleteStudent.self) { grades in
-                    return try CompleteStudent(id: student.requireID(), name: student.name, lastName: student.lastName, username: student.username, dateOfBirth: student.dateOfBirth, classrooms: classrooms, grades: grades)
+                    return try CompleteStudent(id: student.requireID(), name: student.name, lastName: student.lastName, dateOfBirth: student.dateOfBirth, classrooms: classrooms, grades: grades)
                 }
             }
         }
@@ -48,7 +47,12 @@ final class StudentController: RouteCollection {
     
     func create(_ req: Request) throws -> Future<Student> {
         return try req.content.decode(Student.self).flatMap { student in
-            return student.save(on: req)
+            return User.find(student.userID, on: req).flatMap { user in
+                guard user != nil else {
+                    throw Abort(.badRequest, reason: "No user with this ID exists.")
+                }
+                return student.save(on: req)
+            }
         }
     }
     
@@ -63,7 +67,6 @@ final class StudentController: RouteCollection {
             return try req.content.decode(Student.self).flatMap { newStudent in
                 student.name = newStudent.name
                 student.lastName = newStudent.lastName
-                student.username = newStudent.username
                 student.dateOfBirth = newStudent.dateOfBirth
                 return student.save(on: req)
             }

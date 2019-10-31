@@ -1,5 +1,6 @@
 import Vapor
 import FluentPostgreSQL
+import Authentication
 
 /// Called before your application initializes.
 ///
@@ -15,6 +16,8 @@ public func configure(
     services.register(router, as: Router.self)
     
     try services.register(FluentPostgreSQLProvider())
+    
+    try services.register(AuthenticationProvider())
 
     // Configure the rest of your application here
     

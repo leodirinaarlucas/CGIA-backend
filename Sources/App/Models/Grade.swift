@@ -16,7 +16,7 @@ final class Grade: PostgreSQLModel {
     var studentID: Student.ID
     var classroomID: Classroom.ID
     
-    init(id: Int? = nil, grades: [Double], finalGrade: Double, student: Student.ID, classroom: Classroom.ID) {
+    init(id: Int? = nil, grades: [Double], student: Student.ID, finalGrade: Double, classroom: Classroom.ID) {
         self.id = id
         self.grades = grades
         self.finalGrade = finalGrade

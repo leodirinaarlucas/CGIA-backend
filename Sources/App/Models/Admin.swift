@@ -13,15 +13,15 @@ final class Admin: PostgreSQLModel {
     var id: Int?
     var name: String
     var lastName: String
-    var username: String
     var dateOfBirth: String
+    var userID: User.ID
     
-    init(id: Int? = nil, name: String, lastName: String, username: String, dateOfBirth: String) {
+    init(id: Int? = nil, name: String, lastName: String, username: String, dateOfBirth: String, userID: User.ID) {
         self.id = id
         self.name = name
-        self.username = username
         self.dateOfBirth = dateOfBirth
         self.lastName = lastName
+        self.userID = userID
     }
 }
 

@@ -1,5 +1,7 @@
 import Routing
 import Vapor
+import Crypto
+import Authentication
 
 /// Register your application's routes here.
 ///

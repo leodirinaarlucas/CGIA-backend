@@ -8,28 +8,51 @@
 import Foundation
 import Vapor
 import FluentPostgreSQL
+import Crypto
+import Authentication
+
+struct PublicUser: Content {
+    var id: Int?
+    var username: String
+    var profile: String
+}
 
 final class UserController: RouteCollection {
     func boot(router: Router) throws {
         let router = router.grouped(Paths.main, Paths.user)
         router.get(use: index)
-        router.get(User.parameter, use: getUser)
         router.post(use: create)
         router.delete(User.parameter, use: delete)
         router.patch(User.parameter, use: update)
+        
+        let basicAuthMiddleware = User.basicAuthMiddleware(using: BCrypt)
+        let guardAuthMiddlewar = User.guardAuthMiddleware()
+        let authGroup = router.grouped([basicAuthMiddleware, guardAuthMiddlewar])
+        authGroup.get(User.parameter, use: getUser)
     }
     
-    func index(_ req: Request) throws -> Future<[User]> {
-        return User.query(on: req).all()
+    func index(_ req: Request) throws -> Future<[PublicUser]> {
+        return User.query(on: req).decode(data: PublicUser.self).all()
     }
     
-    func getUser(_ req: Request) throws -> Future<User> {
-        return try req.parameters.next(User.self)
+    func getUser(_ req: Request) throws -> Future<PublicUser> {
+        return try req.parameters.next(User.self).map(to: PublicUser.self) { user in
+            return PublicUser(id: user.id, username: user.username, profile: user.profile)
+        }
     }
     
     func create(_ req: Request) throws -> Future<User> {
-        return try req.content.decode(User.self).flatMap { user in
-            return user.save(on: req)
+        return try req.content.decode(User.self).flatMap { newUser in
+            return User.query(on: req).filter(\.username == newUser.username).first().flatMap { user in
+                guard user == nil else {
+                    throw Abort(.badRequest, reason:"A user with this username already exists.")
+                }
+                let digest = try req.make(BCryptDigest.self)
+                let hashedPassword = try digest.hash(newUser.password)
+                let updatedNewUser = User(id: newUser.id, username: newUser.username, password: hashedPassword, profile: newUser.profile)
+                return updatedNewUser.save(on: req)
+            }
+            
         }
     }
     
