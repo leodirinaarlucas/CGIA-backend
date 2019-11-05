@@ -27,6 +27,7 @@ final class StudentController: RouteCollection {
         router.get(Student.parameter, use: getStudent)
         router.get(Student.parameter, Paths.classroom, use: getClasses)
         router.get(Student.parameter, Paths.grade, use: getGrades)
+        router.get(Paths.getByUserID, Int.parameter, use: getByUserID)
         router.post(use: create)
         router.patch(Student.parameter, use: update)
         router.delete(Student.parameter, use: delete)
@@ -43,6 +44,16 @@ final class StudentController: RouteCollection {
                     return try CompleteStudent(id: student.requireID(), name: student.name, lastName: student.lastName, dateOfBirth: student.dateOfBirth, classrooms: classrooms, grades: grades, userID: student.userID)
                 }
             }
+        }
+    }
+    
+    func getByUserID(_ req: Request) throws -> Future<Student> {
+        let id = try req.parameters.next(Int.self)
+        return Student.query(on: req).filter(\.userID == id).first().map(to: Student.self) { student in
+            guard let student = student else {
+                throw Abort(.badRequest, reason: "No user with this username exists.")
+            }
+            return student
         }
     }
     

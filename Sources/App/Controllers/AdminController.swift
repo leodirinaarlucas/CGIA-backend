@@ -14,6 +14,7 @@ final class AdminController: RouteCollection {
         let router = router.grouped(Paths.main, Paths.admin)
         router.get(use: index)
         router.get(Admin.parameter, use: getAdmin)
+        router.get(Paths.getByUserID, Int.parameter, use: getByUserID)
         router.post(use: create)
         router.delete(Admin.parameter, use: delete)
         router.patch(Admin.parameter, use: update)
@@ -25,6 +26,16 @@ final class AdminController: RouteCollection {
     
     func getAdmin(_ req: Request) throws -> Future<Admin> {
         return try req.parameters.next(Admin.self)
+    }
+    
+    func getByUserID(_ req: Request) throws -> Future<Admin> {
+        let id = try req.parameters.next(Int.self)
+        return Admin.query(on: req).filter(\.userID == id).first().map(to: Admin.self) { admin in
+            guard let admin = admin else {
+                throw Abort(.badRequest, reason: "No instructor with this username exists.")
+            }
+            return admin
+        }
     }
     
     func create(_ req: Request) throws -> Future<Admin> {

@@ -7,6 +7,7 @@
 
 import Foundation
 import Vapor
+import FluentPostgreSQL
 
 struct CompleteInstructor: Content {
     let id: Int
@@ -23,6 +24,7 @@ final class InstructorController: RouteCollection {
         router.get(use: index)
         router.get(Instructor.parameter, use: getInstructor)
         router.get(Instructor.parameter, Paths.classroom, use: getClassrooms)
+        router.get(Paths.getByUserID, Int.parameter, use: getByUserID)
         router.post(use: create)
         router.patch(Instructor.parameter, use: update)
         router.delete(Instructor.parameter, use: delete)
@@ -37,6 +39,16 @@ final class InstructorController: RouteCollection {
             return try instructor.classrooms.query(on: req).all().map(to: CompleteInstructor.self) { classrooms in
                 return try CompleteInstructor(id: instructor.requireID(), name: instructor.name, lastName: instructor.lastName, dateOfBirth: instructor.dateOfBirth, classrooms: classrooms, userID: instructor.userID)
             }
+        }
+    }
+    
+    func getByUserID(_ req: Request) throws -> Future<Instructor> {
+        let id = try req.parameters.next(Int.self)
+        return Instructor.query(on: req).filter(\.userID == id).first().map(to: Instructor.self) { instructor in
+            guard let instructor = instructor else {
+                throw Abort(.badRequest, reason: "No instructor with this username exists.")
+            }
+            return instructor
         }
     }
     

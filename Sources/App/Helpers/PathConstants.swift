@@ -19,4 +19,5 @@ enum Paths {
     static let user: String = "users"
     static let admin: String = "admins"
     static let stuClass: String = "studentsClassrooms"
+    static let getByUserID: String = "userid"
 }

@@ -28,7 +28,7 @@ final class UserController: RouteCollection {
         let basicAuthMiddleware = User.basicAuthMiddleware(using: BCrypt)
         let guardAuthMiddlewar = User.guardAuthMiddleware()
         let authGroup = router.grouped([basicAuthMiddleware, guardAuthMiddlewar])
-        authGroup.get(User.parameter, use: getUser)
+        authGroup.get(String.parameter, use: getUser)
     }
     
     func index(_ req: Request) throws -> Future<[PublicUser]> {
@@ -36,7 +36,11 @@ final class UserController: RouteCollection {
     }
     
     func getUser(_ req: Request) throws -> Future<PublicUser> {
-        return try req.parameters.next(User.self).map(to: PublicUser.self) { user in
+        let authUsername = try req.parameters.next(String.self)
+        return User.query(on: req).filter(\.username == authUsername).first().map(to: PublicUser.self) { user in
+            guard let user = user else {
+                throw Abort(.badRequest, reason: "No user with this username exists.")
+            }
             return PublicUser(id: user.id, username: user.username, profile: user.profile)
         }
     }
