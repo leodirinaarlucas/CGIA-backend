@@ -54,7 +54,6 @@ final class AdminController: RouteCollection {
             return admin.delete(on: req)
         }.transform(to: .ok)
     }
-    
     func update(_ req: Request) throws -> Future<Admin> {
         return try req.parameters.next(Admin.self).flatMap { admin in
             return try req.content.decode(Admin.self).flatMap { newAdmin in

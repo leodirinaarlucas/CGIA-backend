@@ -14,11 +14,8 @@ final class StudentClassroom: PostgreSQLPivot, ModifiablePivot {
         self.studentID = try left.requireID()
         self.classroomID = try right.requireID()
     }
-    
     typealias Left = Student
-    
     typealias Right = Classroom
-    
     static var leftIDKey: WritableKeyPath<StudentClassroom, Int> = \.studentID
     static var rightIDKey: WritableKeyPath<StudentClassroom, Int> = \.classroomID
     var id: Int?

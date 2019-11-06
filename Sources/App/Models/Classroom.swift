@@ -15,7 +15,6 @@ final class Classroom: PostgreSQLModel {
     var subjectID: Subject.ID
     var instructorID: Instructor.ID
     var active: Bool
-    
     init(id: Int? = nil, name: String, subjectID: Subject.ID, instructorID: Instructor.ID, active: Bool) {
         self.id = id
         self.name = name
@@ -23,24 +22,19 @@ final class Classroom: PostgreSQLModel {
         self.instructorID = instructorID
         self.active = active
     }
-    
     var grades: Children<Classroom, Grade> {
         return children(\.classroomID)
     }
-    
     var instructor: Parent<Classroom, Instructor> {
         return parent(\.instructorID)
     }
-    
     var subject: Parent<Classroom, Subject> {
         return parent(\.subjectID)
     }
-    
     var students: Siblings<Classroom, Student, StudentClassroom> {
         return siblings()
     }
 }
-
 extension Classroom: Migration {
     static func prepare(on connection: PostgreSQLConnection) -> Future<Void> {
         return Database.create(self, on: connection) { builder in

@@ -11,26 +11,20 @@ import FluentPostgreSQL
 import Fluent
 
 final class SubjectClassroom: PostgreSQLPivot, ModifiablePivot {
-    
     init(_ left: Student, _ right: Subject) throws {
         self.studentID = try left.requireID()
         self.courseID = try right.requireID()
     }
-    
     typealias Left = Student
-    
     typealias Right = Subject
-    
     static var leftIDKey: WritableKeyPath<SubjectClassroom, Int> = \.studentID
     static var rightIDKey: WritableKeyPath<SubjectClassroom, Int> = \.courseID
-    
     var id: Int?
     var studentID: Student.ID
     var courseID: Subject.ID
 }
 
 extension SubjectClassroom {
-    
 }
 
 extension SubjectClassroom: Migration {

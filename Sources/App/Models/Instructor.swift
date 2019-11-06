@@ -16,8 +16,8 @@ final class Instructor: PostgreSQLModel {
     var lastName: String
     var dateOfBirth: String
     var userID: User.ID
-    
-    public init(id: Int? = nil, name: String, lastName: String, username: String, dateOfBirth: String, userID: User.ID) {
+    public init(id: Int? = nil, name: String, lastName: String, username: String,
+                dateOfBirth: String, userID: User.ID) {
         self.id = id
         self.name = name
         self.dateOfBirth = dateOfBirth

@@ -13,12 +13,10 @@ import Fluent
 final class Subject: PostgreSQLModel {
     var id: Int?
     var name: String
-    
     public init(id: Int? = nil, name: String) {
         self.id = id
         self.name = name
     }
-    
     var classrooms: Children<Subject, Classroom> {
         return children(\.subjectID)
     }

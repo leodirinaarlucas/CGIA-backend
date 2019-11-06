@@ -15,7 +15,6 @@ final class Admin: PostgreSQLModel {
     var lastName: String
     var dateOfBirth: String
     var userID: User.ID
-    
     init(id: Int? = nil, name: String, lastName: String, username: String, dateOfBirth: String, userID: User.ID) {
         self.id = id
         self.name = name

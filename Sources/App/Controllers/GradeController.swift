@@ -33,7 +33,6 @@ final class GradeController: RouteCollection {
             return admin.delete(on: req)
         }.transform(to: .ok)
     }
-    
     func update(_ req: Request) throws -> Future<Grade> {
         return try req.parameters.next(Grade.self).flatMap { grade in
             return try req.content.decode(Grade.self).flatMap { newGrade in

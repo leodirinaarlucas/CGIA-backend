@@ -49,14 +49,14 @@ final class UserController: RouteCollection {
         return try req.content.decode(User.self).flatMap { newUser in
             return User.query(on: req).filter(\.username == newUser.username).first().flatMap { user in
                 guard user == nil else {
-                    throw Abort(.badRequest, reason:"A user with this username already exists.")
+                    throw Abort(.badRequest, reason: "A user with this username already exists.")
                 }
                 let digest = try req.make(BCryptDigest.self)
                 let hashedPassword = try digest.hash(newUser.password)
-                let updatedNewUser = User(id: newUser.id, username: newUser.username, password: hashedPassword, profile: newUser.profile)
+                let updatedNewUser = User(id: newUser.id, username: newUser.username,
+                                          password: hashedPassword, profile: newUser.profile)
                 return updatedNewUser.save(on: req)
             }
-            
         }
     }
     

@@ -26,11 +26,10 @@ public func configure(
             services.register(postgreSQLConfig)
         }
     } else {
-        let postgreSQLConfig = PostgreSQLDatabaseConfig(hostname: "127.0.0.1", port: 5432, username: "carneiro", database: "CGIAdb", password: nil)
+        let postgreSQLConfig = PostgreSQLDatabaseConfig(hostname: "127.0.0.1", port: 5432,
+                                                        username: "carneiro", database: "CGIAdb", password: nil)
         services.register(postgreSQLConfig)
     }
-    
-    
     var migrations = MigrationConfig()
     migrations.add(model: Student.self, database: .psql)
     migrations.add(model: Subject.self, database: .psql)

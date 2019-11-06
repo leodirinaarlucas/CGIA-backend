@@ -18,8 +18,6 @@ struct CompleteStudent: Content {
     var grades: [Grade]
     var userID: User.ID
 }
-
-
 final class StudentController: RouteCollection {
     func boot(router: Router) throws {
         let router = router.grouped(Paths.main, Paths.students)
@@ -41,7 +39,9 @@ final class StudentController: RouteCollection {
         return try req.parameters.next(Student.self).flatMap(to: CompleteStudent.self) { student in
             return try student.classrooms.query(on: req).all().flatMap(to: CompleteStudent.self) { classrooms in
                 return try student.grades.query(on: req).all().map(to: CompleteStudent.self) { grades in
-                    return try CompleteStudent(id: student.requireID(), name: student.name, lastName: student.lastName, dateOfBirth: student.dateOfBirth, classrooms: classrooms, grades: grades, userID: student.userID)
+                    return try CompleteStudent(id: student.requireID(), name: student.name,
+                                               lastName: student.lastName, dateOfBirth: student.dateOfBirth, classrooms: classrooms,
+                                               grades: grades, userID: student.userID)
                 }
             }
         }
@@ -84,13 +84,11 @@ final class StudentController: RouteCollection {
             }
         }
     }
-    
     func getClasses(_ req: Request) throws -> Future<[Classroom]> {
         return try req.parameters.next(Student.self).flatMap(to: [Classroom].self) { student in
             return try student.classrooms.query(on: req).all()
         }
     }
-    
     func getGrades(_ req: Request) throws -> Future<[Grade]> {
         return try req.parameters.next(Student.self).flatMap(to: [Grade].self) { student in
             return try student.grades.query(on: req).all()

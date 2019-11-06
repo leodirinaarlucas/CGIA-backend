@@ -16,7 +16,6 @@ final class Student: PostgreSQLModel {
     var lastName: String
     var dateOfBirth: String
     var userID: User.ID
-    
     public init(id: Int? = nil, name: String, lastName: String, dateOfBirth: String, userID: User.ID) {
         self.id = id
         self.name = name
@@ -24,11 +23,9 @@ final class Student: PostgreSQLModel {
         self.dateOfBirth = dateOfBirth
         self.userID = userID
     }
-    
     var classrooms: Siblings<Student, Classroom, StudentClassroom> {
         return siblings()
     }
-    
     var grades: Children<Student, Grade> {
         return children(\.studentID)
     }

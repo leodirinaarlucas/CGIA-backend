@@ -47,7 +47,8 @@ final class ClassroomController: RouteCollection {
                             return try CompleteClassroom(id: classroom.requireID(), name: classroom.name,
                                                          subjectID: classroom.subjectID,
                                                          instructorID: classroom.instructorID, grades: grades,
-                                                         instructor: instructor, subject: subject, students: students, active: classroom.active)
+                                                         instructor: instructor, subject: subject,
+                                                         students: students, active: classroom.active)
                         }
                     }
                 }
@@ -85,10 +86,8 @@ final class ClassroomController: RouteCollection {
             return classroom.delete(on: req)
         }.transform(to: .ok)
     }
-    
     func update(_ req: Request) throws -> Future<Classroom> {
-        return try req.parameters.next(Classroom.self).flatMap {
-            classroom in
+        return try req.parameters.next(Classroom.self).flatMap { classroom in
             return try req.content.decode(Classroom.self).flatMap { newClassroom in
                 classroom.name = newClassroom.name
                 classroom.subjectID = newClassroom.subjectID

@@ -7,6 +7,6 @@ final class AppTests: XCTestCase {
         XCTAssert(true)
     }
     static let allTests = [
-        ("testNothing", testNothing),
+        ("testNothing", testNothing)
     ]
 }

@@ -70,7 +70,6 @@ final class InstructorController: RouteCollection {
             }
           }
       }
-    
     func delete(_ req: Request) throws -> Future<HTTPStatus> {
         return try req.parameters.next(Instructor.self).flatMap { instructor in
             return instructor.delete(on: req)

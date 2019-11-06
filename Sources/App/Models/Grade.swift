@@ -15,7 +15,6 @@ final class Grade: PostgreSQLModel {
     var finalGrade: Double
     var studentID: Student.ID
     var classroomID: Classroom.ID
-    
     init(id: Int? = nil, grades: [Double], student: Student.ID, finalGrade: Double, classroom: Classroom.ID) {
         self.id = id
         self.grades = grades
@@ -23,11 +22,9 @@ final class Grade: PostgreSQLModel {
         self.studentID = student
         self.classroomID = classroom
     }
-    
     var student: Parent<Grade, Student> {
         return parent(\.studentID)
     }
-    
     var classroom: Parent<Grade, Classroom> {
         return parent(\.classroomID)
     }

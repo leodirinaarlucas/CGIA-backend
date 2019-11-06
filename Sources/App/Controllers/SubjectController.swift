@@ -42,21 +42,18 @@ final class SubjectController: RouteCollection {
             return try subject.classrooms.query(on: req).all()
         }
     }
-    
     func create(_ req: Request) throws -> Future<Subject> {
         return try req.content.decode(Subject.self).flatMap { course in
             return course.save(on: req)
         }
     }
-    
     func delete(_ req: Request) throws -> Future<HTTPStatus> {
         return try req.parameters.next(Subject.self).flatMap { course in
             return course.delete(on: req)
         }.transform(to: .ok)
     }
     func update(_ req: Request) throws -> Future<Subject> {
-        return try req.parameters.next(Subject.self).flatMap {
-            subject in
+        return try req.parameters.next(Subject.self).flatMap { subject in
             return try req.content.decode(Subject.self).flatMap { newSubject in
                 subject.name = newSubject.name
                 return subject.save(on: req)
