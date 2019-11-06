@@ -46,7 +46,7 @@ final class InstructorController: RouteCollection {
         let id = try req.parameters.next(Int.self)
         return Instructor.query(on: req).filter(\.userID == id).first().map(to: Instructor.self) { instructor in
             guard let instructor = instructor else {
-                throw Abort(.badRequest, reason: "No instructor with this username exists.")
+                throw Abort(.badRequest, reason: "No instructor with this userID exists.")
             }
             return instructor
         }

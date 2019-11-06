@@ -32,7 +32,7 @@ final class AdminController: RouteCollection {
         let id = try req.parameters.next(Int.self)
         return Admin.query(on: req).filter(\.userID == id).first().map(to: Admin.self) { admin in
             guard let admin = admin else {
-                throw Abort(.badRequest, reason: "No instructor with this username exists.")
+                throw Abort(.badRequest, reason: "No admin with this userID exists.")
             }
             return admin
         }
