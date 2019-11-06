@@ -21,7 +21,6 @@ final class StudentClassroom: PostgreSQLPivot, ModifiablePivot {
     
     static var leftIDKey: WritableKeyPath<StudentClassroom, Int> = \.studentID
     static var rightIDKey: WritableKeyPath<StudentClassroom, Int> = \.classroomID
-    
     var id: Int?
     var studentID: Student.ID
     var classroomID: Classroom.ID

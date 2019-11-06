@@ -75,5 +75,4 @@ final class UserController: RouteCollection {
             }
         }
     }
-    
 }

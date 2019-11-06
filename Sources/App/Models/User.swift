@@ -21,7 +21,6 @@ final class User: PostgreSQLModel {
     var username: String
     var password: String
     var profile: String
-    
     init(id: Int? = nil, username: String, password: String, profile: String) {
         self.id = id
         self.username = username

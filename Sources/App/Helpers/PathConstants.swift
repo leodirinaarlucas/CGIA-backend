@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 enum Paths {
     static let main: String = "api"
     static let version: String = "v1"

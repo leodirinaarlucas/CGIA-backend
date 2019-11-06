@@ -54,7 +54,6 @@ final class SubjectController: RouteCollection {
             return course.delete(on: req)
         }.transform(to: .ok)
     }
-    
     func update(_ req: Request) throws -> Future<Subject> {
         return try req.parameters.next(Subject.self).flatMap {
             subject in

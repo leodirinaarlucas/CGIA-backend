@@ -37,7 +37,9 @@ final class InstructorController: RouteCollection {
     func getInstructor(_ req: Request) throws -> Future<CompleteInstructor> {
         return try req.parameters.next(Instructor.self).flatMap(to: CompleteInstructor.self) { instructor in
             return try instructor.classrooms.query(on: req).all().map(to: CompleteInstructor.self) { classrooms in
-                return try CompleteInstructor(id: instructor.requireID(), name: instructor.name, lastName: instructor.lastName, dateOfBirth: instructor.dateOfBirth, classrooms: classrooms, userID: instructor.userID)
+                return try CompleteInstructor(id: instructor.requireID(), name: instructor.name,
+                                              lastName: instructor.lastName, dateOfBirth: instructor.dateOfBirth,
+                                              classrooms: classrooms, userID: instructor.userID)
             }
         }
     }
@@ -74,7 +76,6 @@ final class InstructorController: RouteCollection {
             return instructor.delete(on: req)
         }.transform(to: .ok)
     }
-    
     func update(_ req: Request) throws -> Future<Instructor> {
         return try req.parameters.next(Instructor.self).flatMap { instructor in
             return try req.content.decode(Instructor.self).flatMap { newInstructor in
