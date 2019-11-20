@@ -51,7 +51,7 @@ final class StudentController: RouteCollection {
         let id = try req.parameters.next(Int.self)
         return Student.query(on: req).filter(\.userID == id).first().map(to: Student.self) { student in
             guard let student = student else {
-                throw Abort(.badRequest, reason: "No student with this userID exists.")
+                throw Abort(.badRequest, reason: "Calebe")
             }
             return student
         }
